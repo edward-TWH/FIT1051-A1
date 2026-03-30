@@ -24,13 +24,53 @@ public class ConsoleIO
 
     public int getIntInput(String message, int min, int max)
     {
-        System.out.println(message);
-        return Integer.parseInt((input.nextLine()));
+        int output = 0;
+        boolean isNotValid;
+
+        do
+        {
+           try
+           {
+               System.out.println(message);
+               output = Integer.parseInt(input.nextLine());
+
+               // input should fall within min and max range
+               isNotValid = (output < min || output > max) ?
+                       true : false;
+           }
+
+           catch (Exception e)
+           {
+               isNotValid = true;
+           }
+        } while (isNotValid);
+
+        return output;
     }
 
     public String getStringInput(String message)
     {
-        System.out.println(message);
-        return input.nextLine();
+        String output = "";
+        boolean isNotValid;
+
+        do
+        {
+            try
+            {
+                System.out.println(message);
+                output = input.nextLine().strip();
+
+                // input should not be empty and have more than 3 characters
+                isNotValid = (output.isBlank() || output.length() < 3) ?
+                        true : false;
+            }
+
+            catch (Exception e)
+            {
+                isNotValid = true;
+            }
+        } while (isNotValid);
+
+        return output;
     }
 }
