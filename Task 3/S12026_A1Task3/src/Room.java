@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Room
 {
     private int id;
@@ -45,4 +48,12 @@ public class Room
     {
         this.monster = newMonster;
     }
+
+    public String toString()
+    {
+        String output = "Room %s (Exits %s, Monster %s)";
+        return String.format(output, this.id,
+                Arrays.toString(this.exits), this.monster);
+    }
+
 }
