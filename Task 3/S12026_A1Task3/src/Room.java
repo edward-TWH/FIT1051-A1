@@ -9,6 +9,11 @@ public class Room
         this.id = 0;
         this.exits = new int[4];
         this.monster = new Monster();
+
+        for (int i = 0; i < 4; i++)
+        {
+            this.exits[i] = 0;
+        }
     }
 
     public int[] getExits()
