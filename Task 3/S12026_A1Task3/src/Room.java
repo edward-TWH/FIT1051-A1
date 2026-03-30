@@ -19,6 +19,13 @@ public class Room
         }
     }
 
+    public Room(int id, int[] exits, Monster monster)
+    {
+        this.id = id;
+        this.exits = exits;
+        this.monster = monster;
+    }
+
     public int[] getExits()
     {
         return this.exits;
