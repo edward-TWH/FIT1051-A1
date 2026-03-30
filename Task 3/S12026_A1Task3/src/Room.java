@@ -26,6 +26,11 @@ public class Room
         this.monster = monster;
     }
 
+    public int getExitAt(int direction)
+    {
+        return this.exits[direction];
+    }
+
     public int[] getExits()
     {
         return this.exits;
@@ -41,6 +46,11 @@ public class Room
         return this.monster;
     }
 
+    public void setExit(int direction, int id)
+    {
+        this.exits[direction] = id;
+    }
+
     public void setExits(int[] newExits)
     {
         this.exits = newExits;
@@ -54,16 +64,6 @@ public class Room
     public void setMonster(Monster newMonster)
     {
         this.monster = newMonster;
-    }
-
-    public int getExitAt(int direction)
-    {
-        return this.exits[direction];
-    }
-
-    public void setExit(int direction, int id)
-    {
-        this.exits[direction] = id;
     }
 
     public String toString()
