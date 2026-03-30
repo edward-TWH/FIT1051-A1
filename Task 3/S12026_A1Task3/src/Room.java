@@ -56,6 +56,16 @@ public class Room
         this.monster = newMonster;
     }
 
+    public int getExitAt(int direction)
+    {
+        return this.exits[direction];
+    }
+
+    public void setExit(int direction, int id)
+    {
+        this.exits[direction] = id;
+    }
+
     public String toString()
     {
         String output = "Room %s (Exits %s, Monster %s)";
