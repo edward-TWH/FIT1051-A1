@@ -39,6 +39,7 @@ public class ConsoleIO
                        true : false;
            }
 
+           // an exception is raised if parseInt could not find an integer
            catch (Exception e)
            {
                isNotValid = true;
@@ -65,6 +66,7 @@ public class ConsoleIO
                         true : false;
             }
 
+            // an exception is raised if nextLine could not find a line
             catch (Exception e)
             {
                 isNotValid = true;
