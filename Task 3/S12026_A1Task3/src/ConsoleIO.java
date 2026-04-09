@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ConsoleIO
@@ -40,7 +41,7 @@ public class ConsoleIO
            }
 
            // an exception is raised if parseInt could not find an integer
-           catch (Exception e)
+           catch (NumberFormatException e)
            {
                isNotValid = true;
            }
@@ -67,7 +68,7 @@ public class ConsoleIO
             }
 
             // an exception is raised if nextLine could not find a line
-            catch (Exception e)
+            catch (NoSuchElementException e)
             {
                 isNotValid = true;
             }
