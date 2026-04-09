@@ -11,6 +11,7 @@ public class BattleSimManager
     private final ConsoleIO console;
     private Character player;
     private Monster monster;
+    private boolean isRunning;
 
     /**
      * Default constructor that initializes a new player and a default Goblin
@@ -21,6 +22,7 @@ public class BattleSimManager
         player = new Character();
         monster = new Monster("Goblin", 70, 20, 4);
         console = new ConsoleIO();
+        isRunning = true;
     }
 
     /**
@@ -34,6 +36,7 @@ public class BattleSimManager
         this.player = player;
         this.monster = new Monster("Goblin", 70, 20, 4);
         this.console = console;
+        this.isRunning = true;
     }
 
     /**
@@ -153,28 +156,33 @@ public class BattleSimManager
     {
         displayWelcomeMessage();
 
-        displayMenu();
-
-        int userChoice = console.getIntInput("Enter your choice (1-2): ",
-                                             1, 2);
-        switch (userChoice)
+        while(this.isRunning)
         {
-            case 1:
-                createPlayerCharacter();
-                String victor = battle();
-                int hp = victor.equals(player.getName()) ?
-                        player.getHealth() :
-                        victor.length();
-                console.display(victor + " wins the battle with " + hp +
-                                "remaining hp.");
+            displayMenu();
 
-                break;
-            case 2:
-                terminateProgram("Thanks for playing!");
-                break;
-            default:
-                terminateProgram("That is not a valid choice.");
+            int userChoice = console.getIntInput("Enter your choice (1-2): ",
+                    1, 2);
+
+            switch (userChoice)
+            {
+                case 1:
+                    createPlayerCharacter();
+                    String victor = battle();
+                    int hp = victor.equals(player.getName()) ?
+                            player.getHealth() :
+                            victor.length();
+                    console.display(victor + " wins the battle with " + hp +
+                            "remaining hp.");
+
+                    break;
+                case 2:
+                    terminateProgram("Thanks for playing!");
+                    break;
+                default:
+                    terminateProgram("That is not a valid choice.");
+            }
         }
+
     }
 
     /**
@@ -201,6 +209,7 @@ public class BattleSimManager
     {
         console.display(message);
         console.display("Terminating the program");
+        this.isRunning = false;
         System.exit(0);
     }
 
